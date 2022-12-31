@@ -1,0 +1,85 @@
+@import './fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  #app-root {
+    --clr-brand-primary: 0 121 255;
+    --clr-brand-secondary: 34 39 49;
+
+    --clr-font-primary: 75 106 155;
+    --clr-font-secondary: 43 52 66;
+    --clr-font-tertiary: 105 124 154;
+    --clr-font-quaternary: 255 255 255;
+
+    --clr-bg-primary: 246 248 255;
+    --clr-bg-secondary: 254 254 254;
+
+    --clr-ui-warning: 247 70 70;
+
+    --fs-sm: 0.6875rem;
+    --fs-base: 0.8125rem;
+    --fs-base-2: 0.8125rem;
+    --fs-md: 1rem;
+    --fs-lg: 1.625rem;
+
+    @apply min-h-screen font-main text-base font-normal leading-normal text-font-primary bg-bg-primary transition-colors duration-500;
+  }
+
+  #app-root[data-dark-mode='true'] {
+    --clr-brand-secondary: 255 255 255;
+
+    --clr-font-primary: 255 255 255;
+    --clr-font-secondary: 255 255 255;
+    --clr-font-tertiary: 255 255 255;
+
+    --clr-bg-primary: 20 29 47;
+    --clr-bg-secondary: 30 42 71;
+  }
+
+  @screen md {
+    #app-root {
+      --fs-sm: 0.8125rem;
+      --fs-base: 0.9375rem;
+      --fs-base-2: 1.125rem;
+      --fs-md: 1.625rem;
+    }
+  }
+}
+
+@layer components {
+  .dev-card-layout {
+    display: grid;
+    grid-template-areas:
+      'avatar      .        intro'
+      '.           .            .'
+      'bio        bio         bio'
+      '.           .            .'
+      'stats     stats      stats'
+      '.           .            .'
+      'personal personal personal';
+    grid-template-columns: 4.375rem 1.2rem auto;
+    grid-template-rows: 4.375rem 2rem auto 1.5rem auto 1.5rem auto;
+  }
+
+  @screen md {
+    .dev-card-layout {
+      grid-template-columns: 7.3125rem 2.5rem auto;
+      grid-template-rows: 7.3125rem 1.5rem auto 2rem auto 2rem auto;
+    }
+  }
+
+  @screen lg {
+    .dev-card-layout {
+      grid-template-areas:
+        'avatar .    intro'
+        'avatar .      bio'
+        '.      .    stats'
+        '.      . personal';
+      grid-template-columns: auto 2.3rem auto;
+      grid-template-rows: auto auto auto auto;
+    }
+  }
+}
